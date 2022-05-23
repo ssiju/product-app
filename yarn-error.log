@@ -1,0 +1,57 @@
+Arguments: 
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js install
+
+PATH: 
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/hduser/Android/Sdk/tools:/home/hduser/Android/Sdk/platform-tools
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  16.4.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: connect ENETUNREACH 104.16.17.35:443 - Local (0.0.0.0:0)
+      at internalConnect (node:net:906:16)
+      at defaultTriggerAsyncIdScope (node:internal/async_hooks:433:18)
+      at emitLookup (node:net:1050:9)
+      at /usr/share/yarn/lib/cli.js:103580:28
+      at /usr/share/yarn/lib/cli.js:103489:13
+      at RawTask.module.exports.RawTask.call (/usr/share/yarn/lib/cli.js:79577:19)
+      at flush (/usr/share/yarn/lib/cli.js:79659:29)
+      at processTicksAndRejections (node:internal/process/task_queues:78:11)
+
+npm manifest: 
+  {
+    "name": "product-app",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~45.0.0",
+      "expo-status-bar": "~1.3.0",
+      "react": "17.0.2",
+      "react-dom": "17.0.2",
+      "react-native": "0.68.2",
+      "react-native-web": "0.17.7"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.12.9"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

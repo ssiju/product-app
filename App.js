@@ -1,20 +1,68 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import PhoneAuthScreen from "./src/Screens/PhoneAuthScreen";
+import HomeScreen from "./src/Screens/HomeScreen";
+import axios from "axios";
+import GoogleMapScreen from "./src/Screens/GoogleMapScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createNativeStackNavigator();
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    await axios.get("https://fakestoreapi.com/products").then((res) => {
+      window.products = res.data;
+    });
+  }
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="HomeScreen">
+          <Stack.Screen
+            name="PhoneAuth"
+            component={PhoneAuthScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{
+              title: "Products",
+              headerTitleAlign: "center",
+              headerStyle: {
+                backgroundColor: "#61dafb",
+              },
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+          <Stack.Screen
+            name="GoogleMapScreen"
+            component={GoogleMapScreen}
+            options={{
+              title: "Google Map",
+              headerTitleAlign: "center",
+              headerStyle: {
+                backgroundColor: "#61dafb",
+              },
+              headerTintColor: "#fff",
+              headerTitleStyle: {
+                fontWeight: "bold",
+              },
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
