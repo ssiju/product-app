@@ -4,7 +4,7 @@ import { Image } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native";
 import { Text, StyleSheet } from "react-native";
-import { Card, Button } from "react-native-elements";
+import { Card, Button, AirbnbRating } from "react-native-elements";
 
 export default class Products extends Component {
   constructor(props) {
@@ -25,15 +25,43 @@ export default class Products extends Component {
               resizeMode={"contain"}
             />
           </TouchableOpacity>
+
           <Text style={{ marginBottom: 10, marginTop: 20 }} h2>
             {this.props.title}
           </Text>
+
           <Text style={styles.price} h4>
             {"$" + this.props.price}
           </Text>
+
           <Text h6 style={styles.description}>
             {this.props.category}
           </Text>
+          <Text h6 style={styles.description}>
+            {this.props.count}
+          </Text>
+          <AirbnbRating
+            count={5}
+            reviews={[
+              "Terrible",
+              "Bad",
+              "Meh",
+              "OK",
+              "Good",
+              "Hmm...",
+              "Very Good",
+              "Wow",
+              "Amazing",
+              "Unbelievable",
+              "Jesus",
+            ]}
+            showRating={this.props.count}
+            defaultRating={this.props.rate}
+            size={20}
+            starContainerStyle={{
+              alignSelf: "flex-start",
+            }}
+          />
           <Button
             type="clear"
             title="Shop now"

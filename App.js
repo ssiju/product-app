@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeScreen">
+        <Stack.Navigator initialRouteName="PhoneAuth">
           <Stack.Screen
             name="PhoneAuth"
             component={PhoneAuthScreen}

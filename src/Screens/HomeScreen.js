@@ -9,27 +9,38 @@ import Products from "../Component/Products";
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      products: window.products,
+    };
   }
+
   render() {
     return (
       <SafeAreaView style={styleSheet.MainContainer}>
         <StatusBar animated={true} backgroundColor="#61dafb" />
-        <FlatList
-          data={window.products}
-          renderItem={({ item }) => (
-            <Products
-              key={item.id}
-              imgURL={item.image}
-              title={item.title}
-              price={item.price}
-              category={item.category}
-              onPress={() => this.props.navigation.navigate("GoogleMapScreen")}
-            />
-          )}
-          keyExtractor={(item) => item.id}
-          key={(item) => item.id}
-        />
+        {this.state.products.length > 0 ? (
+          <FlatList
+            data={this.state.products}
+            renderItem={({ item }) => (
+              <Products
+                key={item.id}
+                imgURL={item.image}
+                title={item.title}
+                price={item.price}
+                count={item.rating.count}
+                rate={item.rating.rate}
+                category={item.category}
+                onPress={() =>
+                  this.props.navigation.navigate("GoogleMapScreen")
+                }
+              />
+            )}
+            keyExtractor={(item) => item.id}
+            key={(item) => item.id}
+          />
+        ) : (
+          <ActivityIndicator />
+        )}
       </SafeAreaView>
     );
   }
