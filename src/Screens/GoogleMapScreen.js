@@ -48,7 +48,6 @@ export default class GoogleMapScreen extends Component {
     if (coords) {
       const { latitude, longitude, accuracy } = coords;
       this.setState({ lat: latitude, long: longitude });
-      console.log("Croods::::::::", coords);
       this.getDelta(latitude, longitude, accuracy);
     }
   };

@@ -15,6 +15,7 @@ import {
   PhoneAuthProvider,
   signInWithCredential,
 } from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // PROVIDE VALID FIREBASE >=9.x.x CONFIG HERE
 // https://firebase.google.com/docs/web/setup
@@ -144,6 +145,10 @@ export default function PhoneAuthScreen({ navigation }) {
                   verificationCodeTextInput.current?.clear();
                   navigation.navigate("HomeScreen");
                   // Alert.alert("Phone authentication successful!");
+                  await AsyncStorage.setItem(
+                    "userData",
+                    JSON.stringify("user Data")
+                  );
                 } catch (err) {
                   setConfirmError(err);
                   setConfirmInProgress(false);

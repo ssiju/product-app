@@ -21,6 +21,11 @@
       "supportsTablet": true
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBEGqqPwpOz9TKdZWyqkdb2tPYXy9uoGHM"
+        }
+      },
       "package": "com.product.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",

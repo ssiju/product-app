@@ -37,24 +37,8 @@ export default class Products extends Component {
           <Text h6 style={styles.description}>
             {this.props.category}
           </Text>
-          <Text h6 style={styles.description}>
-            {this.props.count}
-          </Text>
           <AirbnbRating
             count={5}
-            reviews={[
-              "Terrible",
-              "Bad",
-              "Meh",
-              "OK",
-              "Good",
-              "Hmm...",
-              "Very Good",
-              "Wow",
-              "Amazing",
-              "Unbelievable",
-              "Jesus",
-            ]}
             showRating={this.props.count}
             defaultRating={this.props.rate}
             size={20}
@@ -62,10 +46,13 @@ export default class Products extends Component {
               alignSelf: "flex-start",
             }}
           />
+          <Text h6 style={styles.description}>
+            {"Ratings " + this.props.count}
+          </Text>
           <Button
             type="clear"
             title="Shop now"
-            //   onPress={() => this.props.navigation.navigate("Details")}
+            onPress={this.props.onShopClick}
           />
         </Card>
       </SafeAreaView>
@@ -86,5 +73,6 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 10,
     color: "#c1c4cd",
+    paddingLeft: 5,
   },
 });
